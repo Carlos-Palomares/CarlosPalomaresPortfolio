@@ -1,0 +1,123 @@
+﻿@page
+@model ResumeModel
+@{
+    ViewData["Title"] = "Resume";
+    ViewData["BodyClass"] = "resume-page";
+}
+
+<div class="page-header">
+    <div class="page-header-inner">
+        <p class="section-label">Professional Background</p>
+        <h1>Resume</h1>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="resume-embed">
+
+        <!-- NAME & CONTACT -->
+        <div class="resume-section">
+            <div class="resume-header-row">
+                <div class="resume-header-text">
+                    <div class="resume-name">Carlos A. Palomares</div>
+                    <div class="resume-contact">palomarescarlos14@hotmail.com · linkedin.com/in/carlosalbertopalomares · Bellingham, WA</div>
+                </div>
+                <div class="resume-header-photo">
+                    <img src="~/files/Resume-Pic2.jpg" alt="Carlos Palomares" />
+                </div>
+            </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="resume-section">
+            <div class="resume-section-title">Education</div>
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <span class="resume-entry-title">Western Washington University</span>
+                    <span class="resume-entry-date">Expected Jun. 2026</span>
+                </div>
+                <div class="resume-entry-sub">B.A. in Business Administration, Management Information Systems · Bellingham, WA</div>
+            </div>
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <span class="resume-entry-title">Green River College</span>
+                    <span class="resume-entry-date">Oct. 2020 – Dec. 2022</span>
+                </div>
+                <div class="resume-entry-sub">AAS-T in Cybersecurity and Networking · Auburn, WA</div>
+            </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="resume-section">
+            <div class="resume-section-title">Experience</div>
+
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <span class="resume-entry-title">Administrative Assistant — LAZ Parking</span>
+                    <span class="resume-entry-date">Jun. 2023 – Present</span>
+                </div>
+                <div class="resume-entry-sub">Seattle, WA (Remote)</div>
+                <ul>
+                    <li>Implemented script-driven workflows to automate and accelerate data entry processes, maintaining a strong focus on precision and operational oversight.</li>
+                    <li>Ensured compliance and accurate data entry within the revenue ERP system for daily vehicle counts, transaction types, and parking activity.</li>
+                    <li>Audited operational and revenue reports to identify and resolve discrepancies, reducing data errors and improving reporting accuracy.</li>
+                    <li>Proactively followed up with clients to obtain missing reports, supporting up-to-date tracking and data integrity within the ERP system.</li>
+                </ul>
+            </div>
+
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <span class="resume-entry-title">Shuttle Dispatcher — LAZ Parking</span>
+                    <span class="resume-entry-date">Jan. 2023 – Jun. 2024</span>
+                </div>
+                <div class="resume-entry-sub">Seattle, WA (Remote)</div>
+                <ul>
+                    <li>Coordinated shuttle pick-up and drop-off services for students, representing the university in a professional and service-oriented manner.</li>
+                    <li>Collaborated with drivers and managers to resolve delays and mechanical issues, ensuring safe and continuous transportation across campus.</li>
+                    <li>Documented and communicated rider feedback to management, contributing to measurable service improvements.</li>
+                    <li>Promoted campus shuttle awareness through event outreach and social media engagement.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="resume-section">
+            <div class="resume-section-title">Projects</div>
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <span class="resume-entry-title">Automated Data Processing Pipeline — Personal RPA Project</span>
+                    <span class="resume-entry-date">Mar. 2025 – Present</span>
+                </div>
+                <div class="resume-entry-sub">Seattle, WA (Remote)</div>
+                <ul>
+                    <li>Configured a Google Cloud virtual machine and deployed Python scripts to automate extraction and processing of daily parking and revenue reports.</li>
+                    <li>Developed a master script to pull email attachments, group transaction types, sort parking tickets, and compile results into a structured Excel workbook.</li>
+                    <li>Automated daily email delivery of the master Excel file, enabling the pipeline to run without a local machine or manual intervention.</li>
+                    <li>Currently expanding automation to perform browser-based ERP data entry using Python, while continuing to develop skills in cloud infrastructure, scripting, and debugging.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="resume-section">
+            <div class="resume-section-title">Skills &amp; Competencies</div>
+            <div class="resume-entry">
+                <ul>
+                    <li><strong>Programming &amp; Scripting:</strong> Python, SQL, PowerShell, Bash, Batch scripting</li>
+                    <li><strong>Data &amp; Analytics:</strong> Excel (Pivot Tables, Power Query, Dashboards), Tableau, MySQL, MySQL Workbench</li>
+                    <li><strong>Database &amp; Systems:</strong> Database development, ERD diagrams, workflow diagrams, Microsoft Visio</li>
+                    <li><strong>Web Development:</strong> HTML, CSS, web application development</li>
+                    <li><strong>Software &amp; Tools:</strong> Microsoft 365, Power Automate, Google Workspace, VS Code, Dropbox</li>
+                    <li><strong>Core Competencies:</strong> Data accuracy &amp; auditing, data confidentiality, detail-oriented, written communication, time management</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resume-actions">
+            <a href="@Url.Content("~/files/resume.pdf")?v=2" class="btn-primary" target="_blank">
+                Download Resume PDF
+            </a>
+        </div>
+
+    </div>
+</div>

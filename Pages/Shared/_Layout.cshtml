@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@(ViewData["Title"] != null ? ViewData["Title"] + " — Carlos Palomares" : "BUS 410 Portfolio")</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body class="@(ViewData["BodyClass"] ?? "")">
+    <nav>
+        <div class="nav-logo">
+            <a asp-page="/Index">Carlos <span>Palomares</span></a>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a asp-page="/Index"
+                   class="@(ViewContext.RouteData.Values["page"]?.ToString() == "/Index" ? "nav-active" : "")">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a asp-page="/Resume"
+                   class="@(ViewContext.RouteData.Values["page"]?.ToString() == "/Resume" ? "nav-active" : "")">
+                    Resume
+                </a>
+            </li>
+            <li>
+                <a asp-page="/PCR"
+                   class="@(ViewContext.RouteData.Values["page"]?.ToString() == "/PCR" ? "nav-active" : "")">
+                    PCR Activities
+                </a>
+            </li>
+        </ul>
+    </nav>
+    @RenderBody()
+    @if (ViewData["HideFooter"] as bool? != true)
+    {
+        <footer>
+            <p>© 2026 <span>Carlos Palomares Portfolio</span></p>
+        </footer>
+    }
+</body>
+</html>

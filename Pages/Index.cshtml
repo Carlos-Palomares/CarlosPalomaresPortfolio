@@ -1,0 +1,208 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+    ViewData["BodyClass"] = "home-page";
+}
+
+<!-- ── HERO SECTION ── -->
+<div class="hero">
+    <div class="hero-inner">
+        <div class="hero-grid">
+
+            <!-- LEFT: Text -->
+            <div class="hero-text">
+                <p class="hero-eyebrow">Welcome to my portfolio</p>
+                <h1>Hi, I'm <em>Carlos Palomares</em></h1>
+                <p class="hero-role">Management Information Systems Student</p>
+                <p class="hero-tagline">
+                    Business Administration student at Western Washington University,
+                    passionate about how technology and data can solve real problems
+                    and drive smarter decisions.
+                </p>
+                <div class="hero-badges">
+                    <span class="badge accent">Business Administration (MIS)</span>
+                    <span class="badge">Spring 2026</span>
+                    <span class="badge">Bellingham, WA</span>
+                </div>
+            </div>
+
+            <!-- RIGHT: Photo -->
+            <div class="hero-photo">
+                <div class="hero-photo-wrap">
+                    <div class="hero-photo-deco"></div>
+                    <div class="hero-photo-frame">
+                        <img src="~/files/profile-pic.jpg" alt="Carlos Palomares" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ── PHOTO STRIP ── -->
+<div class="photo-strip">
+    <div class="photo-strip-track">
+        <div class="photo-strip-item"><img src="~/files/travel/photo2.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo3.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo4.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo5.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo6.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo7.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo8.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo9.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo10.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo11.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo12.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo13.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo14.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo15.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo16.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo17.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo18.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo19.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo20.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo21.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo22.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo23.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo24.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo25.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo26.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo27.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo28.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo29.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo30.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo31.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo32.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo33.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo34.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo35.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo36.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo37.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo38.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo39.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo40.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo41.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo42.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo43.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo44.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo45.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo46.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo47.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo48.jpg" alt="" /></div>
+        <!-- Duplicate set for seamless infinite loop -->
+        <div class="photo-strip-item"><img src="~/files/travel/photo2.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo3.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo4.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo5.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo6.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo7.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo8.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo9.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo10.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo11.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo12.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo13.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo14.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo15.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo16.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo17.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo18.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo19.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo20.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo21.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo22.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo23.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo24.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo25.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo26.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo27.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo28.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo29.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo30.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo31.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo32.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo33.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo34.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo35.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo36.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo37.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo38.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo39.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo40.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo41.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo42.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo43.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo44.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo45.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo46.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo47.jpg" alt="" /></div>
+        <div class="photo-strip-item"><img src="~/files/travel/photo48.jpg" alt="" /></div>
+    </div>
+</div>
+
+<!-- ── ABOUT ME SECTION ── -->
+<div class="home-about">
+    <div class="home-about-inner">
+
+        <div class="home-about-text">
+            <p class="section-label">About Me</p>
+            <h2>Exploring how technology<br>and business work together.</h2>
+            <div class="home-about-divider"></div>
+            <p>
+                I'm Carlos Palomares, a student at Western Washington University studying
+                Business Administration with a concentration in Management Information Systems,
+                and I expect to graduate in Spring 2026.
+            </p>
+            <p>
+                My interest in this field grew from a long-standing fascination with technology
+                and how it can be used to improve the way people work and solve real problems.
+                I became especially drawn to how technology and business systems come together
+                to make processes more efficient and support better decision making.
+            </p>
+            <p>
+                Beyond my academic interests, I enjoy traveling, photography, and spending time
+                outdoors — experiences that push me to stay curious and continue growing through
+                new perspectives.
+            </p>
+        </div>
+
+        <div class="home-about-sidebar">
+            <div class="home-about-facts">
+                <div class="fact-item">
+                    <span class="fact-label">Major</span>
+                    <span class="fact-value">Business Administration (MIS)</span>
+                </div>
+                <div class="fact-item">
+                    <span class="fact-label">Graduation</span>
+                    <span class="fact-value">Spring 2026</span>
+                </div>
+                <div class="fact-item">
+                    <span class="fact-label">University</span>
+                    <span class="fact-value">Western Washington University</span>
+                </div>
+                <div class="fact-item">
+                    <span class="fact-label">Hobbies</span>
+                    <span class="fact-value">Travel &amp; Photography</span>
+                </div>
+            </div>
+            <div class="home-about-social">
+                <a href="https://www.linkedin.com/in/carlosalbertopalomares/" target="_blank" class="social-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://app.joinhandshake.com/profiles/palomares" target="_blank" class="social-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z" />
+                    </svg>
+                    Handshake
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
