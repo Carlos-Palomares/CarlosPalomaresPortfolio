@@ -15,6 +15,7 @@ C:\Users\Carlos\Documents\Bus410Portfolio\Bus410Portfolio\obj\Debug\net8.0\Bus41
 C:\Users\Carlos\Documents\Bus410Portfolio\Bus410Portfolio\obj\Debug\net8.0\Bus410Portfolio.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Carlos\Documents\Bus410Portfolio\Bus410Portfolio\obj\Debug\net8.0\Bus410Portfolio.RazorAssemblyInfo.cache
 C:\Users\Carlos\Documents\Bus410Portfolio\Bus410Portfolio\obj\Debug\net8.0\Bus410Portfolio.RazorAssemblyInfo.cs
+C:\Users\Carlos\Documents\Bus410Portfolio\Bus410Portfolio\obj\Debug\net8.0\Bus410Portfolio.sourcelink.json
 C:\Users\Carlos\Documents\Bus410Portfolio\Bus410Portfolio\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\Users\Carlos\Documents\Bus410Portfolio\Bus410Portfolio\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\Users\Carlos\Documents\Bus410Portfolio\Bus410Portfolio\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
