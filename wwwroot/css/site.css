@@ -1,4 +1,4 @@
-*, *::before, *::after {
+ï»¿*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -125,10 +125,15 @@ nav {
 }
 
 .nav-dropdown-trigger::after {
-    content: '?';
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
     margin-left: 0.35rem;
-    font-size: 0.7rem;
-    color: currentColor;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    vertical-align: middle;
 }
 
 .nav-submenu {
@@ -259,7 +264,7 @@ body.resume-page .page-header-sub {
     width: calc(100% - 5rem);
 }
 
-/* -- HOME PAGE — HERO -- */
+/* -- HOME PAGE - HERO -- */
 body.home-page .hero {
     background: var(--nav-bg);
     color: var(--nav-text);
@@ -488,7 +493,7 @@ body.home-page .hero-photo-frame {
         display: block;
     }
 
-/* -- HOME PAGE — PHOTO STRIP -- */
+/* -- HOME PAGE - PHOTO STRIP -- */
 body.home-page .photo-strip {
     background: var(--bg);
     overflow: hidden;
@@ -559,7 +564,7 @@ body.home-page .photo-strip-item {
         transform: scale(1.03);
     }
 
-/* -- HOME PAGE — PHOTO PREVIEW OVERLAY -- */
+/* -- HOME PAGE - PHOTO PREVIEW OVERLAY -- */
 body.home-page .photo-preview {
     position: fixed;
     left: 2rem;
@@ -589,7 +594,7 @@ body.home-page .photo-preview {
         display: block;
     }
 
-/* -- HOME PAGE — ABOUT SECTION -- */
+/* -- HOME PAGE - ABOUT SECTION -- */
 body.home-page .home-about {
     background: var(--bg);
     padding: 4.5rem 2.5rem 5rem;
@@ -958,7 +963,7 @@ body.resume-page .btn-primary {
         transform: translateY(-1px);
     }
 
-/* -- PCR PAGE — LAYOUT -- */
+/* -- PCR PAGE - LAYOUT -- */
 body.pcr-page {
     display: flex;
     flex-direction: column;
