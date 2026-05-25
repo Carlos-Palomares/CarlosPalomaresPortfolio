@@ -982,7 +982,7 @@ body.pcr-page .dot-career {
 }
 
 body.pcr-page .pcr-category {
-    max-width: 1256px;
+    max-width: 1408px;
     padding-top: 2rem;
     padding-bottom: 3rem;
     width: 100%;
@@ -1021,7 +1021,7 @@ body.pcr-page .category-title {
 body.pcr-page .activity-grid {
     align-items: stretch;
     display: grid;
-    grid-template-columns: repeat(4, 292px);
+    grid-template-columns: repeat(4, 320px);
     column-gap: 1rem;
     row-gap: 1.25rem;
     justify-content: center;
@@ -1031,16 +1031,16 @@ body.pcr-page .activity-grid {
 }
 
 body.pcr-page .comm-category .activity-grid {
-    grid-template-columns: repeat(4, 292px);
+    grid-template-columns: repeat(4, 320px);
 }
 
 body.pcr-page .career-category .activity-grid {
-    grid-template-columns: repeat(4, 292px);
+    grid-template-columns: repeat(4, 320px);
 }
 
 body.pcr-page .ethics-category .activity-grid,
 body.pcr-page .edia-category .activity-grid {
-    grid-template-columns: repeat(4, 292px);
+    grid-template-columns: repeat(4, 320px);
 }
 
 body.pcr-page .activity-card-v2 {
@@ -1051,10 +1051,10 @@ body.pcr-page .activity-card-v2 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    flex: 0 0 292px;
+    flex: 0 0 320px;
     height: 288px;
     min-height: 0;
-    width: 292px;
+    width: 320px;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
@@ -1074,8 +1074,8 @@ body.pcr-page .card-image-wrap {
     border-top: 3px solid transparent;
     background: var(--bg);
     border-bottom: 1px solid var(--border);
-    flex: 0 0 164px;
-    height: 164px;
+    flex: 0 0 178px;
+    height: 178px;
     overflow: hidden;
 }
 
@@ -1134,14 +1134,14 @@ body.pcr-page .career-bar {
 
 /* card body */
 body.pcr-page .card-body {
-    padding: 1.08rem 1.25rem 1.2rem;
+    padding: 0.95rem 1.25rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.16rem;
-    flex: 0 0 124px;
-    height: 124px;
-    max-height: 124px;
-    min-height: 124px;
+    flex: 0 0 110px;
+    height: 110px;
+    max-height: 110px;
+    min-height: 110px;
 }
 
 body.pcr-page .card-header-row {
@@ -1154,7 +1154,7 @@ body.pcr-page .card-header-row {
 body.pcr-page .card-title {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
-    font-size: 0.98rem;
+    font-size: 1.05rem;
     color: #11110F;
     line-height: 1.12;
     min-width: 0;
@@ -1992,24 +1992,34 @@ footer {
     }
 
     body.pcr-page .card-image-wrap {
-        flex: 0 0 164px;
-        height: 164px;
+        flex: 0 0 178px;
+        height: 178px;
     }
 }
 
-@media (max-width: 1300px) and (min-width: 901px) {
+@media (max-width: 1400px) and (min-width: 1101px) {
     body.pcr-page .activity-grid,
     body.pcr-page .comm-category .activity-grid,
     body.pcr-page .career-category .activity-grid,
     body.pcr-page .ethics-category .activity-grid,
     body.pcr-page .edia-category .activity-grid {
-        grid-template-columns: repeat(3, 292px);
+        grid-template-columns: repeat(3, 320px);
+    }
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+    body.pcr-page .activity-grid,
+    body.pcr-page .comm-category .activity-grid,
+    body.pcr-page .career-category .activity-grid,
+    body.pcr-page .ethics-category .activity-grid,
+    body.pcr-page .edia-category .activity-grid {
+        grid-template-columns: repeat(2, 320px);
     }
 }
 
 @media (min-width: 901px) {
     body.pcr-page .card-title {
-        font-size: 0.98rem;
+        font-size: 1.05rem;
         overflow: visible;
         text-overflow: clip;
         white-space: nowrap;
