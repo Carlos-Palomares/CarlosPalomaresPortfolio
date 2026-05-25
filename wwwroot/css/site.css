@@ -1134,10 +1134,10 @@ body.pcr-page .career-bar {
 
 /* card body */
 body.pcr-page .card-body {
-    padding: 1.15rem 1.25rem 1.25rem;
+    padding: 1.08rem 1.25rem 1.2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.16rem;
     flex: 0 0 124px;
     height: 124px;
     max-height: 124px;
@@ -1147,16 +1147,16 @@ body.pcr-page .card-body {
 body.pcr-page .card-header-row {
     align-items: flex-start;
     display: flex;
-    height: 1.45rem;
+    height: 1.18rem;
     overflow: hidden;
 }
 
 body.pcr-page .card-title {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.98rem;
-    color: var(--text);
-    line-height: 1.2;
+    color: #11110F;
+    line-height: 1.12;
     min-width: 0;
     overflow: visible;
     text-overflow: clip;
@@ -1166,12 +1166,30 @@ body.pcr-page .card-title {
 }
 
 body.pcr-page .card-date {
-    font-size: 0.72rem;
+    align-self: flex-start;
+    font-size: 0.67rem;
     color: var(--text-muted);
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    margin-top: auto;
+    font-weight: 600;
+    letter-spacing: 0.095em;
+    line-height: 1.35;
+    margin-top: 0;
     text-transform: uppercase;
+}
+
+body.pcr-page .ethics-bar + .card-body .card-date {
+    color: var(--accent);
+}
+
+body.pcr-page .edia-bar + .card-body .card-date {
+    color: var(--green);
+}
+
+body.pcr-page .comm-bar + .card-body .card-date {
+    color: var(--blue);
+}
+
+body.pcr-page .career-bar + .card-body .card-date {
+    color: var(--purple);
 }
 
 body.pcr-page .card-reflection {
@@ -1976,6 +1994,16 @@ footer {
     body.pcr-page .card-image-wrap {
         flex: 0 0 164px;
         height: 164px;
+    }
+}
+
+@media (max-width: 1300px) and (min-width: 901px) {
+    body.pcr-page .activity-grid,
+    body.pcr-page .comm-category .activity-grid,
+    body.pcr-page .career-category .activity-grid,
+    body.pcr-page .ethics-category .activity-grid,
+    body.pcr-page .edia-category .activity-grid {
+        grid-template-columns: repeat(3, 292px);
     }
 }
 
