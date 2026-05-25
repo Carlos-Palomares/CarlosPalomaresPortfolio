@@ -1,16 +1,15 @@
-﻿@page
+@page
 @model PCRModel
 @{
     ViewData["Title"] = "PCR Activities";
     ViewData["BodyClass"] = "pcr-page";
 }
 
-<!-- ── PCR HERO (header + reflection merged) ── -->
+<!-- -- PCR HERO (header + reflection merged) -- -->
 <div class="pcr-hero">
     <div class="pcr-hero-inner">
-        <p class="section-label">Professional &amp; Career Readiness</p>
-        <h1 class="pcr-hero-title">PCR Activities</h1>
-        <div class="pcr-hero-divider"></div>
+        <p class="section-label">Western Washington University</p>
+        <h1 class="pcr-hero-title">Professional &amp; Career Readiness Activities</h1>
         <p class="pcr-hero-sub">Reflection and Activities</p>
         <p class="pcr-hero-body">
             A reflection on the professional readiness activities I completed at Western Washington University, including
@@ -47,28 +46,24 @@
     </div>
 </section>
 
-<section class="pcr-activity-overview" aria-labelledby="pcr-activity-heading">
-    <p class="section-label">Activity Collection</p>
-    <h2 id="pcr-activity-heading">Professional Readiness Experiences</h2>
-    <p>
-        These activities are grouped by development area so the page is easier to scan. Each card opens a short
-        reflection with the full activity description and image.
-    </p>
-</section>
-
-<!-- ── ETHICS & PROFESSIONALISM ── -->
+<!-- -- ETHICS & PROFESSIONALISM -- -->
 <div class="pcr-category ethics-category">
     <div class="category-header">
         <div class="category-header-left">
             <div class="category-dot dot-ethics"></div>
+            <p class="category-kicker">Development Area</p>
             <h2 class="category-title">Ethics &amp; Professionalism</h2>
+            <p class="category-description">
+                Coursework and activities focused on professional judgment, responsibility, and thoughtful decision-making.
+            </p>
         </div>
+        <span class="category-count">3 activities</span>
     </div>
     <div class="activity-grid">
 
         <div class="activity-card-v2">
             <div class="card-image-wrap ethics-bar">
-                <img src="~/files/system_design.png" alt="MIS 321" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/system_design.png" alt="MIS 321" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
@@ -97,7 +92,7 @@
 
         <div class="activity-card-v2">
             <div class="card-image-wrap ethics-bar">
-                <img src="~/files/dcholarship.png" alt="Scholarship Application" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/dcholarship.png" alt="Scholarship Application" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
@@ -122,14 +117,14 @@
 
         <div class="activity-card-v2">
             <div class="card-image-wrap ethics-bar">
-                <img src="~/files/chess.png" alt="WWU Chess Club" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/chess.png" alt="WWU Chess Club" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
                 <div class="card-header-row">
                     <span class="card-title">WWU Chess Club</span>
                 </div>
-                <div class="card-date">Winter Quarter 2023 – Present</div>
+                <div class="card-date">Winter Quarter 2023 � Present</div>
                 <p class="card-reflection">
                     Since Winter Quarter 2023 I have been a member of the Western Washington University Chess Club.
                     The club meets regularly on campus where students play chess, discuss strategies, and challenge
@@ -148,19 +143,24 @@
     </div>
 </div>
 
-<!-- ── EQUITY, DIVERSITY, INCLUSION & ACCESSIBILITY ── -->
+<!-- -- EQUITY, DIVERSITY, INCLUSION & ACCESSIBILITY -- -->
 <div class="pcr-category edia-category">
     <div class="category-header">
         <div class="category-header-left">
             <div class="category-dot dot-edia"></div>
+            <p class="category-kicker">Development Area</p>
             <h2 class="category-title">Equity, Diversity, Inclusion &amp; Accessibility</h2>
+            <p class="category-description">
+                Experiences that strengthened my awareness of inclusive, respectful, and collaborative environments.
+            </p>
         </div>
+        <span class="category-count">3 activities</span>
     </div>
     <div class="activity-grid">
 
         <div class="activity-card-v2">
             <div class="card-image-wrap edia-bar">
-                <img src="~/files/orgbehavior.png" alt="MGMT 311" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/orgbehavior.png" alt="MGMT 311" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
@@ -186,16 +186,16 @@
 
         <div class="activity-card-v2">
             <div class="card-image-wrap edia-bar">
-                <img src="~/files/dia-de-los.jpg" alt="Dia de los Muertos" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/dia-de-los.jpg" alt="Dia de los Muertos" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
                 <div class="card-header-row">
-                    <span class="card-title">Día de los Muertos Ofrenda Reception</span>
+                    <span class="card-title">D�a de los Muertos Ofrenda Reception</span>
                 </div>
                 <div class="card-date">October 14, 2025</div>
                 <p class="card-reflection">
-                    On October 14, 2025 I attended the Día de los Muertos Ofrenda Reception hosted on campus at
+                    On October 14, 2025 I attended the D�a de los Muertos Ofrenda Reception hosted on campus at
                     Western Washington University. The event included traditional ofrenda displays honoring loved ones
                     who had passed away, decorated with candles, marigolds, photographs, and meaningful objects. As I
                     walked through the displays I listened to organizers explain the cultural significance of the
@@ -212,7 +212,7 @@
 
         <div class="activity-card-v2">
             <div class="card-image-wrap edia-bar">
-                <img src="~/files/sipnchill.jpg" alt="Sip n Chill" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/sipnchill.jpg" alt="Sip n Chill" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
@@ -238,19 +238,24 @@
     </div>
 </div>
 
-<!-- ── PROFESSIONAL COMMUNICATION ── -->
+<!-- -- PROFESSIONAL COMMUNICATION -- -->
 <div class="pcr-category comm-category">
     <div class="category-header">
         <div class="category-header-left">
             <div class="category-dot dot-comm"></div>
+            <p class="category-kicker">Development Area</p>
             <h2 class="category-title">Professional Communication</h2>
+            <p class="category-description">
+                Activities focused on networking, presenting ideas, and communicating clearly with professionals.
+            </p>
         </div>
+        <span class="category-count">4 activities</span>
     </div>
     <div class="activity-grid">
 
         <div class="activity-card-v2">
             <div class="card-image-wrap comm-bar">
-                <img src="~/files/confidence-career-fair.png" alt="Career Fair" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/confidence-career-fair.png" alt="Career Fair" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
@@ -276,7 +281,7 @@
 
         <div class="activity-card-v2">
             <div class="card-image-wrap comm-bar">
-                <img src="~/files/sma.jpg" alt="SMA Panel" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/sma.jpg" alt="SMA Panel" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
@@ -301,7 +306,7 @@
 
         <div class="activity-card-v2">
             <div class="card-image-wrap comm-bar">
-                <img src="~/files/thriving-ai-era.jpg" alt="AI Era Speaker" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/thriving-ai-era.jpg" alt="AI Era Speaker" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
@@ -330,7 +335,7 @@
 
         <div class="activity-card-v2">
             <div class="card-image-wrap comm-bar">
-                <img src="~/files/dei-panel.jpg" alt="CBE DEI Panel" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/dei-panel.jpg" alt="CBE DEI Panel" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
@@ -357,26 +362,31 @@
     </div>
 </div>
 
-<!-- ── CAREER PREPARATION ── -->
+<!-- -- CAREER PREPARATION -- -->
 <div class="pcr-category career-category">
     <div class="category-header">
         <div class="category-header-left">
             <div class="category-dot dot-career"></div>
+            <p class="category-kicker">Development Area</p>
             <h2 class="category-title">Career Preparation</h2>
+            <p class="category-description">
+                Experiences connected to career tools, workplace readiness, and applied professional skills.
+            </p>
         </div>
+        <span class="category-count">4 activities</span>
     </div>
     <div class="activity-grid">
 
         <div class="activity-card-v2">
             <div class="card-image-wrap career-bar">
-                <img src="~/files/laz-park.jpg" alt="LAZ Internship" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/laz-park.jpg" alt="LAZ Internship" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
                 <div class="card-header-row">
                     <span class="card-title">Laz Parking Web Application Internship</span>
                 </div>
-                <div class="card-date">November 2 – December 14, 2025</div>
+                <div class="card-date">November 2 � December 14, 2025</div>
                 <p class="card-reflection">
                     Between November 2 and December 14, 2025 I worked on an internship project developing a web
                     application for LAZ Parking. The goal of the project was to create a tool that could help
@@ -394,14 +404,14 @@
 
         <div class="activity-card-v2">
             <div class="card-image-wrap career-bar">
-                <img src="~/files/admin.png" alt="LAZ Parking" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/admin.png" alt="LAZ Parking" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
                 <div class="card-header-row">
                     <span class="card-title">Laz Parking Administrative Assistant</span>
                 </div>
-                <div class="card-date">September 30, 2024 – Present</div>
+                <div class="card-date">September 30, 2024 � Present</div>
                 <p class="card-reflection">
                     Since September 30, 2024 I have worked as an Administrative Assistant at LAZ Parking while
                     attending Western Washington University full time. In this role I assist with organizing
@@ -419,7 +429,7 @@
 
         <div class="activity-card-v2">
             <div class="card-image-wrap career-bar">
-                <img src="~/files/link.jpg" alt="LinkedIn" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/link.jpg" alt="LinkedIn" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
@@ -444,7 +454,7 @@
 
         <div class="activity-card-v2">
             <div class="card-image-wrap career-bar">
-                <img src="~/files/handshake.png" alt="Handshake" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
+                <img loading="lazy" decoding="async" src="~/files/handshake.png" alt="Handshake" onerror="this.closest('.card-image-wrap').classList.add('img-error')" />
                 <div class="card-img-placeholder"><span>Add Photo</span></div>
             </div>
             <div class="card-body">
@@ -470,7 +480,7 @@
     </div>
 </div>
 
-<!-- ── ACADEMIC HONESTY ── -->
+<!-- -- ACADEMIC HONESTY -- -->
 <div class="honesty-box">
     <div class="honesty-inner">
         <p class="section-label">Academic Honesty</p>
@@ -486,7 +496,7 @@
 <div class="activity-modal" id="activityModal" aria-hidden="true">
     <div class="activity-modal-backdrop" data-modal-close></div>
     <section class="activity-modal-panel" role="dialog" aria-modal="true" aria-labelledby="activityModalTitle">
-        <button type="button" class="activity-modal-close" data-modal-close aria-label="Close activity reflection">×</button>
+        <button type="button" class="activity-modal-close" data-modal-close aria-label="Close activity reflection">�</button>
 
         <div class="activity-modal-top">
             <div class="activity-modal-header-meta">
@@ -506,13 +516,13 @@
             </div>
 
             <div class="activity-modal-media">
-                <img id="activityModalImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" />
+                <img id="activityModalImage" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" />
             </div>
         </div>
 
         <div class="activity-modal-nav">
-            <button type="button" class="activity-modal-nav-btn" data-modal-prev aria-label="Previous activity">← Previous</button>
-            <button type="button" class="activity-modal-nav-btn" data-modal-next aria-label="Next activity">Next →</button>
+            <button type="button" class="activity-modal-nav-btn" data-modal-prev aria-label="Previous activity">? Previous</button>
+            <button type="button" class="activity-modal-nav-btn" data-modal-next aria-label="Next activity">Next ?</button>
         </div>
     </section>
 </div>

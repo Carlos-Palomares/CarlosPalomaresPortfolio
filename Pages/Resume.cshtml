@@ -1,4 +1,4 @@
-ï»¿@page
+@page
 @model ResumeModel
 @{
     ViewData["Title"] = "Resume";
@@ -25,12 +25,29 @@
             <div class="resume-header-row">
                 <div class="resume-header-text">
                     <div class="resume-name">Carlos A. Palomares</div>
-                    <div class="resume-contact">palomarescarlitos24@gmail.com Â· linkedin.com/in/carlosalbertopalomares Â· Bellingham, WA</div>
+                    <div class="resume-contact">
+                        Business Administration (MIS) · Bellingham, WA ·
+                        <a href="mailto:palomarescarlitos24@gmail.com">palomarescarlitos24@gmail.com</a> ·
+                        <a href="https://www.linkedin.com/in/carlosalbertopalomares" target="_blank" rel="noopener">linkedin.com/in/carlosalbertopalomares</a>
+                    </div>
                 </div>
                 <div class="resume-header-photo">
-                    <img src="~/files/resume-pic2.jpg" alt="Carlos Palomares" />
+                    <img src="~/files/resume-pic2.jpg" alt="Carlos Palomares" decoding="async" />
                 </div>
             </div>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="resume-section resume-summary-section">
+            <div class="resume-section-title">Summary</div>
+            <p class="resume-summary">
+                Management Information Systems student focused on building practical systems that make business work
+                easier to track, automate, and improve. I am especially interested in the space where operations, data,
+                and software meet: cleaning workflows, validating information, building automations, and turning
+                technical ideas into tools people can actually use. My background combines revenue reporting and data
+                auditing at Laz Parking with hands-on projects in Python automation, web applications, cloud deployment,
+                and desktop application development.
+            </p>
         </div>
 
         <!-- EDUCATION -->
@@ -41,85 +58,101 @@
                     <span class="resume-entry-title">Western Washington University</span>
                     <span class="resume-entry-date">Expected Jun. 2026</span>
                 </div>
-                <div class="resume-entry-sub">B.A. in Business Administration, Management Information Systems Â· Bellingham, WA</div>
+                <div class="resume-entry-sub">B.A. in Business Administration, Management Information Systems · Bellingham, WA</div>
             </div>
             <div class="resume-entry">
                 <div class="resume-entry-header">
                     <span class="resume-entry-title">Green River College</span>
-                    <span class="resume-entry-date">Oct. 2020 â€“ Dec. 2022</span>
+                    <span class="resume-entry-date">Oct. 2020 – Dec. 2022</span>
                 </div>
-                <div class="resume-entry-sub">AAS-T in Cybersecurity and Networking Â· Auburn, WA</div>
+                <div class="resume-entry-sub">AAS-T in Cybersecurity and Networking · Auburn, WA</div>
             </div>
         </div>
 
         <!-- EXPERIENCE -->
         <div class="resume-section">
-            <div class="resume-section-title">Experience</div>
+            <div class="resume-section-title">Professional Experience</div>
 
             <div class="resume-entry">
                 <div class="resume-entry-header">
-                    <span class="resume-entry-title">Administrative Assistant â€” LAZ Parking</span>
-                    <span class="resume-entry-date">Jun. 2023 â€“ Present</span>
+                    <span class="resume-entry-title">Laz Parking</span>
+                    <span class="resume-entry-date">Jun. 2023 – Present</span>
                 </div>
-                <div class="resume-entry-sub">Seattle, WA (Remote)</div>
+                <div class="resume-entry-sub">Administrative Assistant · Seattle, WA (Remote)</div>
                 <ul>
-                    <li>Implemented script-driven workflows to automate and accelerate data entry processes, maintaining a strong focus on precision and operational oversight.</li>
-                    <li>Ensured compliance and accurate data entry within the revenue ERP system for daily vehicle counts, transaction types, and parking activity.</li>
-                    <li>Audited operational and revenue reports to identify and resolve discrepancies, reducing data errors and improving reporting accuracy.</li>
-                    <li>Proactively followed up with clients to obtain missing reports, supporting up-to-date tracking and data integrity within the ERP system.</li>
+                    <li>Developed script-assisted workflows that reduced repetitive data entry and improved consistency across recurring reporting tasks.</li>
+                    <li>Maintained revenue ERP records for daily vehicle counts, transaction types, and parking activity across client reporting workflows.</li>
+                    <li>Audited operational and revenue reports to identify discrepancies, correct data issues, and strengthen reporting reliability.</li>
+                    <li>Coordinated client follow-ups for missing reports, helping maintain complete records and stronger data integrity.</li>
                 </ul>
             </div>
 
             <div class="resume-entry">
                 <div class="resume-entry-header">
-                    <span class="resume-entry-title">Shuttle Dispatcher â€” LAZ Parking</span>
-                    <span class="resume-entry-date">Jan. 2023 â€“ Jun. 2024</span>
+                    <span class="resume-entry-title">Laz Parking</span>
+                    <span class="resume-entry-date">Jan. 2023 – Jun. 2024</span>
                 </div>
-                <div class="resume-entry-sub">Seattle, WA (Remote)</div>
+                <div class="resume-entry-sub">Shuttle Dispatcher · Seattle, WA (Remote)</div>
                 <ul>
-                    <li>Coordinated shuttle pick-up and drop-off services for students, representing the university in a professional and service-oriented manner.</li>
-                    <li>Collaborated with drivers and managers to resolve delays and mechanical issues, ensuring safe and continuous transportation across campus.</li>
-                    <li>Documented and communicated rider feedback to management, contributing to measurable service improvements.</li>
-                    <li>Promoted campus shuttle awareness through event outreach and social media engagement.</li>
+                    <li>Coordinated campus shuttle pick-up and drop-off operations while supporting students in a professional, service-focused environment.</li>
+                    <li>Communicated with drivers and managers to resolve delays, route issues, and service concerns during daily operations.</li>
+                    <li>Documented rider feedback and service issues for management review, supporting clearer communication and continuous improvement.</li>
+                    <li>Supported shuttle awareness through event outreach and student-facing communication.</li>
                 </ul>
             </div>
         </div>
 
         <!-- PROJECTS -->
         <div class="resume-section">
-            <div class="resume-section-title">Projects</div>
+            <div class="resume-section-title">Selected Projects</div>
             <div class="resume-entry">
                 <div class="resume-entry-header">
-                    <span class="resume-entry-title">Automated Data Processing Pipeline â€” Personal RPA Project</span>
-                    <span class="resume-entry-date">Mar. 2025 â€“ Present</span>
+                    <span class="resume-entry-title">Python Workflow Automation</span>
+                    <span class="resume-entry-date">Mar. 2025 – Present</span>
                 </div>
-                <div class="resume-entry-sub">Seattle, WA (Remote)</div>
+                <div class="resume-entry-sub">Automated Data Processing Pipeline</div>
                 <ul>
-                    <li>Configured a Google Cloud virtual machine and deployed Python scripts to automate extraction and processing of daily parking and revenue reports.</li>
-                    <li>Developed a master script to pull email attachments, group transaction types, sort parking tickets, and compile results into a structured Excel workbook.</li>
-                    <li>Automated daily email delivery of the master Excel file, enabling the pipeline to run without a local machine or manual intervention.</li>
-                    <li>Currently expanding automation to perform browser-based ERP data entry using Python, while continuing to develop skills in cloud infrastructure, scripting, and debugging.</li>
+                    <li>Configured a Google Cloud virtual machine and deployed Python scripts to automate daily parking and revenue report processing workflows.</li>
+                    <li>Developed a master script to retrieve email attachments, group transaction types, sort parking tickets, and compile outputs into a structured Excel workbook.</li>
+                    <li>Automated daily email delivery of the master workbook, allowing the workflow to run without a local machine or manual intervention.</li>
+                    <li>Built browser-based ERP data-entry automation prototypes using Python, cloud infrastructure, and iterative debugging workflows.</li>
+                </ul>
+            </div>
+
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <span class="resume-entry-title">OverEgg</span>
+                    <span class="resume-entry-date">May 2026 – Present</span>
+                </div>
+                <div class="resume-entry-sub">Windows Overlay &amp; Real-Time Location Companion App</div>
+                <ul>
+                    <li>Built a Python/PySide6 desktop overlay for The Isle, an online multiplayer game, displaying a real-time interactive map so users can track location without switching applications.</li>
+                    <li>Developed external coordinate capture workflows using OCR, clipboard parsing, and manual fallback input, then converted raw location text into live map markers.</li>
+                    <li>Implemented WebSocket-based multiplayer sync with hosted room codes, allowing multiple users to share positions, colors, and custom markers through a Dockerized Railway relay server.</li>
+                    <li>Packaged the app into a distributable Windows executable with PyInstaller, including bundled assets, map data, configurable hotkeys, and user-facing setup controls.</li>
                 </ul>
             </div>
         </div>
 
         <!-- SKILLS -->
         <div class="resume-section">
-            <div class="resume-section-title">Skills &amp; Competencies</div>
+            <div class="resume-section-title">Technical Skills</div>
             <div class="resume-entry">
-                <ul>
-                    <li><strong>Programming &amp; Scripting:</strong> Python, SQL, PowerShell, Bash, Batch scripting</li>
-                    <li><strong>Data &amp; Analytics:</strong> Excel (Pivot Tables, Power Query, Dashboards), Tableau, MySQL, MySQL Workbench</li>
-                    <li><strong>Database &amp; Systems:</strong> Database development, ERD diagrams, workflow diagrams, Microsoft Visio</li>
-                    <li><strong>Web Development:</strong> HTML, CSS, web application development</li>
-                    <li><strong>Software &amp; Tools:</strong> Microsoft 365, Power Automate, Google Workspace, VS Code, Dropbox</li>
-                    <li><strong>Core Competencies:</strong> Data accuracy &amp; auditing, data confidentiality, detail-oriented, written communication, time management</li>
+                <ul class="resume-skills-list">
+                    <li><strong>Programming &amp; Scripting:</strong> Python, SQL, PowerShell, Bash, Batch Scripting, TypeScript</li>
+                    <li><strong>Web &amp; Application Development:</strong> HTML, CSS, Razor Pages, ASP.NET Core, Blazor, React, Tailwind CSS, API Integration, AI-Assisted Development</li>
+                    <li><strong>Data &amp; Analytics:</strong> Excel, Power Query, Tableau, MySQL, Data Cleaning, Data Validation, Data Auditing, Python Data Analysis</li>
+                    <li><strong>Database &amp; Systems Design:</strong> Entity-Relationship Diagrams (ERDs), Relational Database Design, Database Modeling, SQL Queries, SDLC Documentation</li>
+                    <li><strong>Automation &amp; Workflow Tools:</strong> Power Automate, n8n, Python Automation, Workflow Automation, Process Improvement</li>
+                    <li><strong>Cloud &amp; Developer Tools:</strong> Azure, AWS, Google Cloud, Render, Railway, Supabase, Resend, GitHub, Visual Studio, Visual Studio Code, Application Deployment</li>
+                    <li><strong>Business &amp; IT Operations:</strong> Windows Support, PC Troubleshooting, Microsoft 365, Data Confidentiality, Operational Reporting, Detail-Oriented Data Entry</li>
+                    <li><strong>Professional Skills:</strong> Written Communication, Team Collaboration, Stakeholder Communication, Problem Solving, Project Coordination, Time Management, Business Process Analysis</li>
                 </ul>
             </div>
         </div>
 
         <div class="resume-actions">
-            <a href="@Url.Content("~/files/resume.pdf")?v=2" class="btn-primary" target="_blank">
+            <a href="@Url.Content("~/files/resume.pdf")?v=7" class="btn-primary" target="_blank">
                 Download Resume PDF
             </a>
         </div>
