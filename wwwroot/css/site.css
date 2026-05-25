@@ -1205,27 +1205,29 @@ body.pcr-page .card-image-wrap {
     width: 100%;
     position: relative;
     border-top: 3px solid transparent;
-    background: var(--bg);
+    background: #F1EFE8;
     border-bottom: none;
     border-right: 1px solid var(--border);
     height: 100%;
     min-height: 232px;
     overflow: hidden;
+    padding: 0.8rem;
 }
 
     body.pcr-page .card-image-wrap img {
         width: 100%;
         height: 100%;
         display: block;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
-        opacity: 0.9;
+        opacity: 0.94;
+        border-radius: calc(var(--radius-sm) - 1px);
         transition: opacity 0.2s, transform 0.2s;
     }
 
     body.pcr-page .activity-card-v2:hover .card-image-wrap img {
         opacity: 1;
-        transform: scale(1.015);
+        transform: scale(1.01);
     }
 
 body.pcr-page .card-img-placeholder {
