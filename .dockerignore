@@ -1,0 +1,13 @@
+.git
+.gitignore
+.vs
+.vscode
+bin
+obj
+publish
+publish-check
+
+*.user
+*.suo
+
+README.md

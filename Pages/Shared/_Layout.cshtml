@@ -27,6 +27,20 @@
                     Resume
                 </a>
             </li>
+            <li class="nav-dropdown">
+                <button type="button"
+                        class="nav-dropdown-trigger @(ViewContext.RouteData.Values["page"]?.ToString() == "/AIInBusiness" ? "nav-active" : "")">
+                    Projects
+                </button>
+                <ul class="nav-submenu">
+                    <li>
+                        <a asp-page="/AIInBusiness"
+                           class="@(ViewContext.RouteData.Values["page"]?.ToString() == "/AIInBusiness" ? "nav-active" : "")">
+                            AI in Business
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a asp-page="/PCR"
                    class="@(ViewContext.RouteData.Values["page"]?.ToString() == "/PCR" ? "nav-active" : "")">
@@ -39,7 +53,14 @@
     @if (ViewData["HideFooter"] as bool? != true)
     {
         <footer>
-            <p>© 2026 <span>Carlos Palomares Portfolio</span></p>
+            <div class="footer-inner">
+                <p class="footer-brand">© 2026 <span>Carlos Palomares</span></p>
+                <div class="footer-contact" aria-label="Contact links">
+                    <a href="mailto:palomarescarlitos24@gmail.com">palomarescarlitos24@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/carlosalbertopalomares/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://app.joinhandshake.com/profiles/palomares" target="_blank" rel="noopener">Handshake</a>
+                </div>
+            </div>
         </footer>
     }
 </body>
