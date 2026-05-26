@@ -707,6 +707,7 @@ body.home-page .home-about-social {
     flex-direction: row;
     gap: 0.75rem;
     margin-top: 1.6rem;
+    flex-wrap: wrap;
 }
 
     body.home-page .home-about-social .social-btn {
@@ -714,7 +715,7 @@ body.home-page .home-about-social {
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
-        padding: 0.7rem 1.1rem;
+        padding: 0.68rem 1rem;
         background: var(--accent);
         border: 1px solid var(--accent);
         border-radius: var(--radius-sm);
@@ -724,7 +725,17 @@ body.home-page .home-about-social {
         text-decoration: none;
         transition: box-shadow 0.2s, transform 0.18s;
         width: auto;
+        min-width: 132px;
     }
+
+        body.home-page .home-about-social .social-btn img {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            display: block;
+            flex: 0 0 18px;
+            object-fit: contain;
+        }
 
         body.home-page .home-about-social .social-btn:hover {
             box-shadow: 0 10px 22px rgba(0,0,0,0.12);
@@ -750,6 +761,17 @@ body.home-page .home-about-social {
         body.home-page .home-about-social .handshake-btn:hover {
             border-color: #00A676;
             background: #00A676;
+            color: #fff;
+        }
+
+    body.home-page .home-about-social .github-btn {
+        background: #181717;
+        border-color: #181717;
+    }
+
+        body.home-page .home-about-social .github-btn:hover {
+            border-color: #181717;
+            background: #181717;
             color: #fff;
         }
 
