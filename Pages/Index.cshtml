@@ -1,4 +1,4 @@
-@page
+﻿@page
 @model IndexModel
 @{
     ViewData["Title"] = "Home";
@@ -167,20 +167,6 @@
                 outdoors. These experiences push me to stay curious and continue growing through
                 new perspectives.
             </p>
-            <div class="home-about-social">
-                <a href="https://www.linkedin.com/in/carlosalbertopalomares/" target="_blank" rel="noopener" class="social-btn linkedin-btn">
-                    <img src="~/files/contact_icons/linkedin_icon.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
-                    LinkedIn
-                </a>
-                <a href="https://app.joinhandshake.com/profiles/palomares" target="_blank" rel="noopener" class="social-btn handshake-btn">
-                    <img src="~/files/contact_icons/handshake_icon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" />
-                    Handshake
-                </a>
-                <a href="https://github.com/4sciencee" target="_blank" rel="noopener" class="social-btn github-btn">
-                    <img src="~/files/contact_icons/GitHub_Icon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" />
-                    GitHub
-                </a>
-            </div>
         </div>
 
         <div class="home-about-sidebar">
@@ -214,7 +200,38 @@
                     <a class="fact-value fact-link" href="mailto:palomarescarlitos24@gmail.com">palomarescarlitos24@gmail.com</a>
                 </div>
             </div>
+            <div class="home-about-social">
+                <a href="https://www.linkedin.com/in/carlosalbertopalomares/" target="_blank" rel="noopener" class="social-btn linkedin-btn" aria-label="LinkedIn">
+                    <span class="social-icon brand-logo"><img src="~/files/contact_icons/linkedin_logo_button.png" alt="" aria-hidden="true" loading="lazy" decoding="async" /></span>
+                </a>
+                <a href="https://app.joinhandshake.com/profiles/palomares" target="_blank" rel="noopener" class="social-btn handshake-btn" aria-label="Handshake">
+                    <span class="social-icon brand-logo"><img src="~/files/contact_icons/handshake_logo_button.png" alt="" aria-hidden="true" loading="lazy" decoding="async" /></span>
+                </a>
+                <a href="https://github.com/4sciencee" target="_blank" rel="noopener" class="social-btn github-btn" aria-label="GitHub">
+                    <span class="social-icon brand-logo"><img src="~/files/contact_icons/github_logo_button.png" alt="" aria-hidden="true" loading="lazy" decoding="async" /></span>
+                </a>
+            </div>
         </div>
 
     </div>
 </div>
+
+<script>
+    (() => {
+        const heroActions = document.querySelector('.hero-actions');
+        const projectsButton = document.querySelector('.hero-action.secondary');
+
+        if (!heroActions || !projectsButton) {
+            return;
+        }
+
+        const toggleResumeOutline = (isProjectsActive) => {
+            heroActions.classList.toggle('projects-hover', isProjectsActive);
+        };
+
+        projectsButton.addEventListener('mouseenter', () => toggleResumeOutline(true));
+        projectsButton.addEventListener('focus', () => toggleResumeOutline(true));
+        projectsButton.addEventListener('mouseleave', () => toggleResumeOutline(false));
+        projectsButton.addEventListener('blur', () => toggleResumeOutline(false));
+    })();
+</script>

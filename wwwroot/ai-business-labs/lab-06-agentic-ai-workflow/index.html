@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentic AI Workflow | MIS 432</title>
+  <style>
+    :root {
+      --ink: #1a0010;
+      --crimson: #cd003b;
+      --crimson-dark: #99002d;
+      --paper: #fff8fb;
+      --panel: #ffffff;
+      --soft: #f5e8ee;
+      --text: #26111b;
+      --muted: #6b5360;
+      --line: #ead3dc;
+      --code: #13000c;
+      --shadow: 0 10px 28px rgba(26, 0, 16, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(180deg, #ffffff 0%, var(--paper) 45%, #ffffff 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--crimson-dark);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(26, 0, 16, 0.96);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      padding: 0 40px;
+    }
+
+    .top-nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 58px;
+      max-width: none;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .top-brand,
+    .top-back {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .top-brand span {
+      color: #ff7da2;
+    }
+
+    .top-back {
+      font-size: 0.84rem;
+      transition: color 0.18s;
+    }
+
+    .top-back:hover {
+      color: #ff7da2;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex: 0 0 auto;
+    }
+
+    .repo-link {
+      color: #fff;
+      border: 1px solid rgba(255, 125, 162, 0.42);
+      background: rgba(205, 0, 59, 0.1);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 800;
+      white-space: nowrap;
+      padding: 7px 11px;
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .repo-link:hover {
+      border-color: #ff7da2;
+      background: rgba(205, 0, 59, 0.2);
+    }
+
+    .nav-actions a {
+      display: inline-block;
+      font-size: 12px;
+      transition: color 0.18s, transform 0.18s;
+    }
+
+    .repo-link,
+    .repo-link:hover {
+      border: 0;
+      background: transparent;
+      padding: 0;
+    }
+
+    .nav-actions a:hover {
+      color: #fff;
+      transform: scale(1.06);
+    }
+
+    
+    /* NAV CONSISTENCY OVERRIDE */
+    .top-nav {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .nav-actions a {
+      display: inline-block;
+      font-size: 12px;
+      line-height: 1;
+      color: #fff;
+      font-weight: 700;
+      transition: color 0.18s, transform 0.18s;
+    }
+
+    .repo-link,
+    .repo-link:hover {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      color: #fff;
+    }
+
+    .nav-actions a:hover {
+      color: #fff;
+      transform: scale(1.06);
+    }
+
+    .lab-menu {
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .lab-menu-button {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-content: center;
+      gap: 4px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .lab-menu-button span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 999px;
+      transition: background 0.18s;
+    }
+
+    .lab-menu:hover .lab-menu-button,
+    .lab-menu:focus-within .lab-menu-button {
+      color: #ff7da2;
+    }
+
+    .lab-menu-panel {
+      position: absolute;
+      top: calc(100% + 15px);
+      left: 0;
+      width: 310px;
+      padding: 10px;
+      background: rgba(26, 0, 16, 0.98);
+      border: 1px solid rgba(255, 125, 162, 0.34);
+      box-shadow: 0 18px 45px rgba(26, 0, 16, 0.34);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+    }
+
+    .lab-menu:hover .lab-menu-panel,
+    .lab-menu:focus-within .lab-menu-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .lab-menu-panel a {
+      display: block;
+      padding: 9px 10px;
+      color: #ffe5ee;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .lab-menu-panel a:hover {
+      color: #fff;
+      background: rgba(205, 0, 59, 0.16);
+    }
+
+    .hero {
+      color: #fff;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(205, 0, 59, 0.26), transparent 32%),
+        linear-gradient(135deg, var(--ink) 0%, #270017 56%, #420019 100%);
+      padding: 68px 0 54px;
+      border-bottom: 6px solid var(--crimson);
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 12px;
+      color: #ff7da2;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: #ff7da2;
+      flex: 0 0 auto;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 100%;
+      margin: 0;
+      font-size: clamp(2.05rem, 4.2vw, 3.25rem);
+      white-space: nowrap;
+    }
+
+    h1 .title-line {
+      display: block;
+    }
+
+    h1 span {
+      display: inline;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 14px 0 0;
+      color: #ffeef4;
+      font-size: clamp(1.02rem, 2vw, 1.28rem);
+    }
+
+    .hero-meta {
+      margin: 12px 0 0;
+      color: #ffdce7;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-grid {
+      display: block;
+      padding: 0 40px;
+    }
+
+    .hero-card {
+      display: block;
+      max-width: 760px;
+      margin-top: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 11px 14px;
+    }
+
+    .hero-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+      font-size: 0.92rem;
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: #ffe5ee;
+      font-size: 0.92rem;
+    }
+
+    .hero-card ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+      color: #ffe5ee;
+      font-size: 0.92rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 58px;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 0 40px;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-inner a {
+      flex: 0 0 auto;
+      border-bottom: 2px solid transparent;
+      padding: 14px 12px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: color 0.18s, border-bottom-color 0.18s;
+      white-space: nowrap;
+    }
+
+    .nav-inner a:hover {
+      color: var(--crimson-dark);
+      border-bottom-color: var(--crimson);
+    }
+
+    main {
+      padding: 28px 40px 56px;
+    }
+
+    section {
+      scroll-margin-top: 142px;
+      margin: 0 auto 34px;
+    }
+
+    .section-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding: 22px 24px;
+      background: linear-gradient(90deg, #fff 0%, #fff5f8 100%);
+    }
+
+    .number {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--crimson);
+      font-weight: 800;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+    }
+
+    .section-body {
+      padding: 24px;
+    }
+
+    .section-body p:first-child {
+      margin-top: 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .mini-card,
+    .question,
+    .output-block,
+    .callout {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 18px;
+    }
+
+    .mini-card h3,
+    .question h3,
+    .output-block h3,
+    .callout h3 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 1.05rem;
+    }
+
+    .question {
+      border-left: 5px solid var(--crimson);
+      background: #fff9fb;
+    }
+
+    .question p {
+      margin: 0;
+      color: #3a1b29;
+      font-weight: 700;
+    }
+
+    .workflow-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0;
+      margin: 14px 0 0;
+      list-style: none;
+    }
+
+    .workflow-list li {
+      border: 1px solid #f0b7c8;
+      border-radius: 999px;
+      padding: 7px 12px;
+      color: var(--ink);
+      background: #fff2f6;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    figure {
+      margin: 22px 0 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #12000b;
+    }
+
+    figcaption {
+      border-top: 1px solid var(--line);
+      padding: 11px 14px;
+      color: var(--muted);
+      background: #fff9fb;
+      font-size: 0.86rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    figcaption strong {
+      color: var(--ink);
+      font-style: normal;
+    }
+
+    .log {
+      margin: 12px 0 0;
+      border-radius: 8px;
+      padding: 16px;
+      color: #fff4f7;
+      background: var(--code);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .output-block {
+      margin-top: 18px;
+      background: #fffdfd;
+    }
+
+    .output-block ul,
+    .takeaways ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+    }
+
+    .kicker {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--crimson-dark);
+      font-weight: 800;
+      font-size: 0.86rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .callout {
+      margin-top: 18px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, var(--ink) 0%, #350019 100%);
+      border-color: #4f0023;
+    }
+
+    .callout h3 {
+      color: #fff;
+    }
+
+    .callout p,
+    .callout li {
+      color: #ffe9f0;
+    }
+
+    .takeaways {
+      border: 2px solid var(--crimson);
+      background: #fff8fb;
+    }
+
+    .quote-strip {
+      border-left: 5px solid var(--crimson);
+      margin: 18px 0;
+      padding: 12px 16px;
+      color: #32121f;
+      background: var(--soft);
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 6px solid var(--crimson);
+      padding: 28px 22px;
+      color: #fff;
+      background: var(--ink);
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    footer a {
+      color: #ffdce7;
+      font-weight: 700;
+    }
+
+    /* Polished Agentic layout rhythm */
+    :root {
+      --content-width: 1100px;
+      --gutter: clamp(22px, 4vw, 40px);
+      --section-gap: 30px;
+      --radius: 10px;
+      --card-pad: clamp(24px, 3vw, 32px);
+      --shadow-soft: 0 18px 46px rgba(26, 0, 16, 0.09);
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .top-nav {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .top-back,
+    .repo-link,
+    .nav-actions a {
+      color: rgba(255,255,255,0.76);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 700;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      transition: color 0.18s, transform 0.18s;
+    }
+
+    .top-back:hover,
+    .repo-link:hover,
+    .nav-actions a:hover {
+      color: #fff;
+      transform: scale(1.06);
+    }
+
+    .wrap,
+    .nav-inner {
+      max-width: var(--content-width);
+      width: 100%;
+      box-sizing: border-box;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+
+    .hero {
+      padding-top: clamp(84px, 8vw, 108px);
+      padding-bottom: clamp(76px, 7vw, 96px);
+    }
+
+    .hero-grid {
+      display: block;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+
+    h1 {
+      max-width: 900px;
+      font-size: clamp(54px, 6.8vw, 86px);
+      line-height: 0.96;
+      white-space: normal;
+    }
+
+    h1 .title-line:first-child {
+      color: #ff7da2;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.68;
+    }
+
+    .hero-meta {
+      margin-top: 16px;
+      color: rgba(255,255,255,0.74);
+    }
+
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 920px;
+      margin-top: 34px;
+    }
+
+    .hero-stat {
+      border: 1px solid rgba(255,255,255,0.16);
+      border-top: 3px solid #ff7da2;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      padding: 16px 16px 15px;
+    }
+
+    .hero-stat span {
+      display: block;
+      margin-bottom: 6px;
+      color: rgba(255,255,255,0.52);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-stat strong {
+      display: block;
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    nav {
+      border-bottom-color: rgba(234, 211, 220, 0.9);
+    }
+
+    .nav-inner {
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+
+    main.wrap {
+      padding-top: 56px;
+      padding-bottom: 88px;
+    }
+
+    section {
+      margin-bottom: var(--section-gap);
+    }
+
+    .section-card,
+    .mini-card,
+    .question,
+    .output-block,
+    .callout,
+    figure,
+    .log,
+    .quote-strip {
+      border-radius: var(--radius);
+    }
+
+    .section-card {
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-head {
+      padding: 24px 28px;
+      gap: 18px;
+    }
+
+    .number {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius);
+    }
+
+    h2 {
+      font-size: clamp(25px, 2.8vw, 34px);
+      line-height: 1.12;
+    }
+
+    h3 {
+      line-height: 1.25;
+    }
+
+    .section-body {
+      padding: var(--card-pad);
+    }
+
+    .section-body p,
+    .section-body li {
+      font-size: 15.5px;
+      line-height: 1.78;
+    }
+
+    .grid-2 {
+      gap: 18px;
+    }
+
+    .mini-card,
+    .question,
+    .output-block,
+    .callout {
+      padding: 20px;
+    }
+
+    .workflow-list {
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .workflow-list li {
+      border-radius: 999px;
+      padding: 8px 13px;
+    }
+
+    figure {
+      margin-top: 24px;
+    }
+
+    figcaption {
+      padding: 12px 15px;
+    }
+
+    .callout {
+      margin-top: 20px;
+    }
+
+    footer {
+      padding: 48px 22px;
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 64px 0 58px;
+      }
+
+      .hero-grid,
+      .wrap,
+      .nav-inner {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .nav-actions {
+        display: none;
+      }
+
+      .top-nav-inner {
+        justify-content: flex-start;
+      }
+
+      .top-nav {
+        padding: 0 20px;
+      }
+
+      .top-brand {
+        font-size: 0.84rem;
+      }
+
+      .lab-menu-panel {
+        width: min(310px, calc(100vw - 40px));
+      }
+
+      h1 {
+        width: min(346px, calc(100vw - 44px));
+        max-width: 100%;
+        font-size: clamp(46px, 13vw, 58px);
+        overflow-wrap: break-word;
+      }
+
+      .subtitle,
+      .hero-meta {
+        width: min(346px, calc(100vw - 44px));
+        max-width: 100%;
+        overflow-wrap: anywhere;
+      }
+
+      .hero-highlights {
+        grid-template-columns: 1fr;
+        width: min(346px, calc(100vw - 44px));
+        max-width: 100%;
+      }
+
+      .hero-card strong {
+        margin-bottom: 5px;
+      }
+
+      main.wrap {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        padding: 38px 22px 72px !important;
+        box-sizing: border-box !important;
+      }
+
+      section,
+      .section-card,
+      .mini-card,
+      .question,
+      .output-block,
+      .callout,
+      figure {
+        width: calc(100vw - 44px) !important;
+        max-width: calc(100vw - 44px) !important;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+
+      .mini-card,
+      .question,
+      .output-block,
+      .callout,
+      figure {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .section-head,
+      .section-body {
+        padding: 20px;
+      }
+
+      .section-head {
+        grid-template-columns: 44px minmax(0, 1fr);
+        align-items: start;
+        gap: 14px;
+      }
+
+      .number {
+        width: 42px;
+        height: 42px;
+      }
+
+      h2 {
+        font-size: clamp(24px, 7vw, 30px);
+        max-width: min(250px, calc(100vw - 124px));
+        overflow-wrap: anywhere;
+      }
+
+      .section-body p,
+      .section-body li,
+      .question p {
+        width: min(302px, calc(100vw - 88px)) !important;
+        max-width: min(302px, calc(100vw - 88px));
+        overflow-wrap: anywhere;
+      }
+
+      main {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .nav-inner {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-nav">
+    <div class="top-nav-inner">
+      <div class="nav-left">
+        <div class="lab-menu">
+          <button class="lab-menu-button" type="button" aria-label="Open lab navigation">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="lab-menu-panel">
+            <a href="/ai-business-labs/lab-01-netflix-ab-testing/index.html">01 Netflix Artwork A/B Testing</a>
+            <a href="/ai-business-labs/lab-02-spotify-recommendation-system/index.html">02 Spotify Recommendation System</a>
+            <a href="/ai-business-labs/lab-03-uber-forecasting/index.html">03 Uber Demand Forecasting</a>
+            <a href="/ai-business-labs/lab-04-waymo-deep-learning-rl/index.html">04 Waymo Strategy Analysis</a>
+            <a href="/ai-business-labs/lab-05-airbnb-ai-systems/index.html">05 Airbnb AI Systems Analysis</a>
+            <a href="/ai-business-labs/lab-06-agentic-ai-workflow/index.html">06 Agentic AI Workflow</a>
+          </div>
+        </div>
+        <a class="top-brand" href="/AIInBusiness"><span>AI Business</span> Labs</a>
+      </div>
+      <div class="nav-actions">
+        <a class="top-back" href="/AIInBusiness">All AI Labs</a>
+        <a class="repo-link" href="/">Portfolio Home</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">LAB 06</p>
+        <h1><span class="title-line">n8n</span><span class="title-line">Agentic AI Workflow</span></h1>
+        <p class="subtitle">Building n8n agents for insurance denial appeals and concert weekend planning.</p>
+        <p class="hero-meta">Carlos Palomares - Western Washington University</p>
+        <div class="hero-highlights" aria-label="Project highlights">
+          <div class="hero-stat"><span>Platform</span><strong>n8n workflow automation</strong></div>
+          <div class="hero-stat"><span>Agents</span><strong>Insurance advocate and concert planner</strong></div>
+          <div class="hero-stat"><span>Focus</span><strong>Tool use, guardrails, and human review</strong></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Page sections">
+    <div class="wrap nav-inner">
+      <a href="#intro">What I Built</a>
+      <a href="#agentic-ai">Agentic AI</a>
+      <a href="#advocate">Advocate</a>
+      <a href="#maria">Maria</a>
+      <a href="#breaking">Breaking</a>
+      <a href="#james">James</a>
+      <a href="#audit">Audit</a>
+      <a href="#governance">Governance</a>
+      <a href="#should-use">Risks</a>
+      <a href="#concert">Concert</a>
+      <a href="#takeaways">Takeaways</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="intro" class="section-card">
+      <div class="section-head">
+        <div class="number">1</div>
+        <h2>Introduction: What I Built</h2>
+      </div>
+      <div class="section-body">
+        <p>For this lab, I built and tested two AI agents in n8n. The first was an AI Insurance Advocate that reviewed insurance denial information, used tools to look up patient chart evidence and policy requirements, and drafted appeal letters. The second was a personal Concert Weekend Agent that used budget, calendar, and event tools to recommend a rock or heavy metal show in Seattle.</p>
+        <p>The main thing I learned is that agentic AI is useful because it can connect multiple tools and complete a multi-step workflow. At the same time, it is only as reliable as the tools, data, and guardrails it has access to. In healthcare especially, the agent should help with drafting and evidence-finding, but the final decision should still stay with a human reviewer.</p>
+      </div>
+    </section>
+
+    <section id="agentic-ai" class="section-card">
+      <div class="section-head">
+        <div class="number">2</div>
+        <h2>What Agentic AI Means</h2>
+      </div>
+      <div class="section-body">
+        <span class="kicker">Step 1: Research</span>
+        <div class="question">
+          <h3>Question</h3>
+          <p>Think about a multi-step task you do regularly. How would a Level 2 agent handle it vs. a Level 3 agent? Where would you still want to stay in the loop?</p>
+        </div>
+        <p>A multi-step task I do regularly is coming up with side projects that involve web development, application development, or automation. A Level 2 agent could help with this, but I would still have to guide it step by step. For example, I could ask it to brainstorm project ideas, compare which idea is more realistic, create a feature list, suggest a tech stack, and help debug code. The AI would be useful, but I would still be deciding what comes next and how each step connects.</p>
+        <p>A Level 3 agent would be more independent. Instead of asking for each task one at a time, I could give it a broader goal like, "Help me turn this side project idea into a working prototype." From there, the agent could break the project into smaller tasks, identify the main user problem, suggest features, choose a reasonable tech stack, create a project plan, write starter code, test parts of the workflow, and point out what still needs to be fixed. This connects to the agent loop because the agent is not just answering one prompt. It is observing the goal, deciding what step should come next, acting on that step, and adjusting based on the result.</p>
+        <p>I would still want to stay in the loop for the main product decisions. I would want to approve the project idea, the most important features, the design direction, and whether the prototype actually solves the problem I started with. The agent can speed up the planning and building process, but it should not fully decide what the project becomes. This matters because side projects are not only technical tasks. They also require judgment about what is useful, realistic, and worth building.</p>
+      </div>
+    </section>
+
+    <section id="advocate" class="section-card">
+      <div class="section-head">
+        <div class="number">3</div>
+        <h2>AI Insurance Advocate Workflow</h2>
+      </div>
+      <div class="section-body">
+        <p>The AI Insurance Advocate was built in n8n to take an insurance denial, look up the relevant policy, search the patient chart, and draft an appeal letter for human review. The workflow JSON confirmed these main components:</p>
+        <ul class="workflow-list" aria-label="Insurance Advocate workflow components">
+          <li>Chat Trigger</li>
+          <li>AI Agent</li>
+          <li>OpenAI Chat Model</li>
+          <li>Policy Lookup tool</li>
+          <li>Patient Chart tool</li>
+        </ul>
+        <p>This makes it agentic because the AI Agent was not just answering one prompt. It decided which tools to call, used the tool results, and created an appeal draft for human review.</p>
+        <figure>
+          <img src="assets/agentic-workflow-1.jpg" loading="lazy" decoding="async" alt="AI Insurance Advocate n8n workflow showing chat trigger, AI agent, OpenAI model, Policy Lookup, and Patient Chart tools">
+          <figcaption><strong>Figure 1.</strong> AI Insurance Advocate workflow in n8n with Chat Trigger, AI Agent, OpenAI model, Policy Lookup, and Patient Chart tools.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="maria" class="section-card">
+      <div class="section-head">
+        <div class="number">4</div>
+        <h2>Maria Santos Case</h2>
+      </div>
+      <div class="section-body">
+        <span class="kicker">Step 2: Build the AI Insurance Advocate in n8n</span>
+        <div class="question">
+          <h3>Question</h3>
+          <p>Check the logs. The AI Insurance Advocate decided which tools to call and in what order. Did it follow the workflow you expected, or did it do something different? Was that smart or a mistake?</p>
+        </div>
+        <p>In Step 2, the AI Insurance Advocate called the tools in the order Policy Lookup -> Patient Chart. At first, I expected it to check the patient chart first, but the order it used made sense. The denial was based on BlueCross policy HIP-4420 Section 3.2, so the agent first needed to understand the exact policy requirements. Then it searched the patient chart for evidence that matched those requirements.</p>
+        <p>The strongest part of the output was that the agent did not just write a general appeal saying the MRI was necessary. It connected the chart evidence directly to the denial reason. The denial said conservative treatment was not documented for at least 6 weeks, but the agent found that Maria Santos was prescribed naproxen on 02/12/2026 and was still using it at the 04/02/2026 follow-up. It also used PT notes from 02/19/2026, 03/05/2026, and 03/26/2026 to show limited improvement, continued pain, and a recommendation for advanced imaging. Then it connected the 04/02/2026 exam findings, including a positive McMurray test and medial joint line tenderness, to the policy requirement for internal derangement.</p>
+        <p>This was a smart tool order because the agent needed both sources to make the appeal convincing. The policy showed what BlueCross required, and the chart showed whether Maria met those requirements. If the agent only used the chart, it could explain her knee injury but might not prove that she met the insurance criteria. If it only used the policy, it would know the rule but would not have the patient-specific facts needed to challenge the denial.</p>
+        <p>I would still want a human in the loop before sending the appeal. The agent's draft was useful, but healthcare appeals have real patient and financial consequences. A human reviewer should confirm that the dates are correct, the records are actually attached, and the letter does not claim anything beyond what is documented in the chart. This connects to the prediction-decision gap because the agent can draft a strong appeal, but the draft is not the final decision. The AI can gather evidence and recommend that the denial should be challenged, but a human still needs to decide whether the appeal is accurate enough to submit.</p>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Maria Santos tool log</h3>
+            <div class="log">When chat message received
+AI Agent
+OpenAI Chat Model
+Policy Lookup
+Patient Chart
+OpenAI Chat Model</div>
+          </div>
+          <div class="mini-card">
+            <h3>Main evidence found</h3>
+            <ul>
+              <li>Naproxen started on 02/12/2026 and continued through follow-up.</li>
+              <li>PT notes showed limited improvement and continued pain.</li>
+              <li>04/02/2026 exam showed medial joint line tenderness and positive McMurray test.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="output-block">
+          <h3>Maria Santos appeal output</h3>
+          <p><strong>To:</strong> BlueCross Regional Health Plan - Medical Review/Appeals<br>
+          <strong>Re:</strong> Appeal of Denial - Maria Santos, DOB 03/15/1968, Member ID BCR-2024-88421<br>
+          <strong>Claim:</strong> CLM-2026-04-77829 (CPT 73721 - MRI, right knee)<br>
+          <strong>Denial reason cited:</strong> "Conservative treatment not documented for minimum 6 weeks. Per policy HIP-4420, Section 3.2."</p>
+          <p><strong>Summary request:</strong> Please reverse the denial and authorize payment for CPT 73721. Submitted documentation demonstrates that the medical necessity criteria in HIP-4420 Section 3.2 were met prior to ordering and performing the MRI.</p>
+          <p><strong>Policy language:</strong> HIP-4420 Section 3.2 says MRI of the knee is medically necessary when all are met: minimum 6 weeks conservative treatment, conservative treatment failed to produce meaningful improvement, and physical exam suggests internal derangement.</p>
+          <ul>
+            <li>02/12/2026 - Primary care visit: right knee pain after fall; Naproxen 500 mg BID prescribed and PT ordered.</li>
+            <li>02/19/2026 - PT intake: PT initiated.</li>
+            <li>03/05/2026 - PT progress: minimal improvement, pain 7/10, limited flexion despite compliance.</li>
+            <li>03/26/2026 - PT discharge: 5 weeks PT, less than 10% ROM improvement, pain 6-7/10, plateau, advanced imaging recommended.</li>
+            <li>04/02/2026 - Follow-up: 5 weeks PT with minimal improvement, naproxen partial relief, conservative treatment failed, medial joint line tenderness, positive McMurray test, MRI ordered.</li>
+            <li>04/08/2026 - MRI performed.</li>
+          </ul>
+          <p><strong>Conclusion:</strong> The chart evidence supports that Maria met the conservative treatment requirement through ongoing naproxen therapy and documented PT. The record also documents treatment failure and exam findings consistent with internal derangement. The appeal requested that BlueCross overturn the denial and authorize payment for CPT 73721.</p>
+        </div>
+
+        <figure>
+          <img src="assets/agentic-workflow-2.jpg" loading="lazy" decoding="async" alt="Maria Santos AI Insurance Advocate output and logs in n8n">
+          <figcaption><strong>Figure 2.</strong> Maria Santos test run showing the Policy Lookup and Patient Chart tool calls.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="breaking" class="section-card">
+      <div class="section-head">
+        <div class="number">5</div>
+        <h2>Breaking the Advocate</h2>
+      </div>
+      <div class="section-body">
+        <span class="kicker">Step 3: Break the AI Insurance Advocate</span>
+        <div class="question">
+          <h3>Question</h3>
+          <p>The agent did not hallucinate because we told it not to. But not every AI system has that guardrail. Pick a high-stakes field outside healthcare. If someone deployed an agent without that instruction, what could go wrong and who gets harmed?</p>
+        </div>
+        <p>A high-stakes field outside healthcare where this could go wrong is finance, especially loan approval or investment advising. If a financial AI agent was deployed without a clear instruction to avoid making up facts, it could create a professional-looking recommendation based on missing or unverified information. For example, if the agent did not have access to a customer's full income history, debt information, credit file, or risk profile, it might still write a confident loan recommendation or investment plan instead of stopping and asking for the missing data.</p>
+        <p>The main risk is that the output could look accurate even when it is not. A loan agent might claim that a borrower has stable income or a low debt-to-income ratio when that was never verified. An investment agent might recommend a risky portfolio to someone who cannot afford that level of risk because it guessed from incomplete data. The customer would be harmed first because they could be denied unfairly, approved for debt they cannot manage, or pushed into investments that do not fit their situation. The company would also be harmed because bad recommendations could create regulatory problems, lawsuits, and loss of trust.</p>
+        <p>This connects back to the AI Insurance Advocate because the system prompt and tool access are what made the agent safer. When the Patient Chart tool was removed, the agent was supposed to stop and ask for information instead of inventing medical evidence. That is the right failure mode. In finance, the same rule matters. If the agent does not have enough verified information, it should say what is missing and escalate to a human. It should not fill in the gaps just to finish the task. The business lesson is that agentic AI can save time, but only if it is designed to fail safely when its data or tools are incomplete.</p>
+      </div>
+    </section>
+
+    <section id="james" class="section-card">
+      <div class="section-head">
+        <div class="number">6</div>
+        <h2>James Whitfield Case</h2>
+      </div>
+      <div class="section-body">
+        <span class="kicker">Step 4: Second Patient</span>
+        <div class="question">
+          <h3>Question</h3>
+          <p>The denial says James had no cardiac symptoms in the past 30 days. Look at his chart. Is the denial correct? What evidence would you cite? Did the AI Insurance Advocate find the same evidence you did?</p>
+        </div>
+        <p>For James Whitfield, the denial said there were no documented cardiac symptoms within 30 days of the cardiac stress test. Based on the chart, I do not think that denial is correct. James had a follow-up visit with Dr. Priya Mehta on 03/18/2026 where he reported chest tightness while climbing stairs for the past 2 to 3 weeks. His stress test was performed on 03/25/2026, which was only 7 days after that visit. This shows that cardiac symptoms were documented within the 30-day window.</p>
+        <p>The evidence I would cite is the 03/18/2026 follow-up note because it directly challenges the reason for the denial. That note documents chest tightness with exertion, episodes lasting 2 to 3 minutes, and symptoms that went away with rest. It also shows that James had several cardiac risk factors, including age over 70, elevated LDL, high blood pressure, and family history of heart disease. The provider assessed him as having atypical chest pain with significant cardiac risk factors and ordered the stress test to rule out ischemic heart disease. The risk factors matter, but the most important evidence is still the chest tightness because the denial was specifically about missing symptoms within 30 days.</p>
+        <p>The AI Insurance Advocate found the same main evidence I did. It identified the 03/18/2026 visit, the chest tightness, and the 03/25/2026 stress test date. The logs showed the tool order was Policy Lookup -> Patient Chart -> Policy Lookup. That order made sense because the agent tried to check the policy first, then compare the policy to the chart, then check the policy again. The issue was that the Policy Lookup tool did not return HIP-5510 Section 2.1 for cardiac stress tests. Instead of making up the policy language, the agent explained that it was using the chart and the denial reason only.</p>
+        <p>This shows both the benefit and the limitation of agentic AI. The agent was useful because it quickly found the main contradiction in the denial. The denial said there were no symptoms, but the chart showed chest tightness 7 days before the test. At the same time, the agent could not fully verify the appeal because the correct policy was missing. This matters because an agent can only be as reliable as the tools and data it has access to. A human reviewer should still confirm the HIP-5510 policy language before submitting the appeal.</p>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>James Whitfield tool log</h3>
+            <div class="log">When chat message received
+AI Agent
+OpenAI Chat Model
+Policy Lookup
+Patient Chart
+OpenAI Chat Model
+Policy Lookup
+OpenAI Chat Model
+Policy Lookup
+OpenAI Chat Model</div>
+          </div>
+          <div class="mini-card">
+            <h3>Why the denial should be challenged</h3>
+            <p>The denial said there were no documented cardiac symptoms within 30 days. The chart documented chest tightness on 03/18/2026, and the stress test was performed on 03/25/2026. Both dates fall within the 30-day window.</p>
+          </div>
+        </div>
+
+        <div class="output-block">
+          <h3>James Whitfield output</h3>
+          <p><strong>Summary of denial and next steps:</strong> BlueCross Regional Health Plan denied CPT 93015, cardiac stress test, for James Whitfield, DOB 07/22/1953, Claim CLM-2026-04-22314. The reason given was "No documented cardiac symptoms within 30 days of test. Per policy HIP-5510, Section 2.1."</p>
+          <p>The agent attempted to retrieve HIP-5510 Section 2.1 through Policy Lookup, but the exact policy text was not returned. Because the denial cited HIP-5510 Section 2.1, the agent prepared the appeal based only on the chart documentation and the denial reason.</p>
+          <ul>
+            <li>01/15/2026 - Annual physical: age 72, family history of heart disease, LDL 168, BP 138/88.</li>
+            <li>03/18/2026 - Follow-up: chest tightness when climbing stairs for 2-3 weeks, episodes lasting 2-3 minutes and resolving with rest, BP 142/90, normal sinus rhythm on EKG, assessment of atypical chest pain with significant cardiac risk factors.</li>
+            <li>03/25/2026 - Stress test performed at Swedish Cardiac Imaging Center.</li>
+          </ul>
+        </div>
+
+        <figure>
+          <img src="assets/agentic-workflow-3.jpg" loading="lazy" decoding="async" alt="James Whitfield AI Insurance Advocate output and logs in n8n">
+          <figcaption><strong>Figure 3.</strong> James Whitfield test run showing repeated Policy Lookup attempts and chart-based appeal reasoning.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="audit" class="section-card">
+      <div class="section-head">
+        <div class="number">7</div>
+        <h2>Auditing the Output</h2>
+      </div>
+      <div class="section-body">
+        <span class="kicker">Step 5: Audit the Output</span>
+        <div class="question">
+          <h3>Question</h3>
+          <p>Did you find any errors, hallucinations, or missing information in the appeal letter? If your hospital processed 500 of these per month, is this kind of line-by-line audit realistic? What would you propose instead?</p>
+        </div>
+        <p>After auditing the Maria Santos appeal letter, I did not find any major factual errors or clinical hallucinations. I checked the dates, treatment history, clinical findings, and policy references against the patient chart and HIP-4420 Section 3.2. The letter correctly stated that naproxen was prescribed on 02/12/2026 and was still being used at the 04/02/2026 follow-up. That supports the argument that Maria had more than 6 weeks of anti-inflammatory treatment before the MRI was performed.</p>
+        <p>The appeal also matched the PT records. It used the 02/19/2026 PT intake, the 03/05/2026 progress note, and the 03/26/2026 discharge note to show limited improvement, continued pain, and a recommendation for advanced imaging. The clinical findings also matched the chart. The letter cited pain levels of 6 to 7/10, less than 10% ROM improvement, medial joint line tenderness, and a positive McMurray test. These details matter because HIP-4420 Section 3.2 requires conservative treatment, failure to improve, and physical exam findings that suggest internal derangement.</p>
+        <p>The main issue I found was not a clinical hallucination, but it still matters. The letter said supporting records were attached, including office visit notes, PT records, the MRI order, and imaging confirmation. In the lab, the agent did not actually attach those documents. It only listed what should be attached. In a real hospital, that would need to be checked before submission because missing attachments could delay the appeal or weaken the case.</p>
+        <p>If the hospital processed 500 appeals per month, a full line-by-line audit for every letter would not be realistic. It would take too much time and would remove part of the benefit of using the agent. Instead, I would use a risk-based audit system. Every appeal should still need human approval, but low-risk appeals with clear source evidence and matching policy language could get a shorter checklist review. Higher-risk cases, missing tool outputs, missing attachments, unusual policy codes, or appeals where the agent says information is incomplete should get a full manual review. The system should also track error types, missing documentation, wrong policy citations, and appeal success rate so the hospital can see whether the agent is actually improving the process.</p>
+      </div>
+    </section>
+
+    <section id="governance" class="section-card">
+      <div class="section-head">
+        <div class="number">8</div>
+        <h2>AI Governance</h2>
+      </div>
+      <div class="section-body">
+        <span class="kicker">Step 6: Governance brief</span>
+        <div class="question">
+          <h3>Question</h3>
+          <p>Write your governance brief for the AI Insurance Advocate using the five layers. Which layer would be hardest to get right at scale, and why?</p>
+        </div>
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Purpose and scope</h3>
+            <p>The AI Insurance Advocate should only be used to draft appeal letters for denied insurance claims by comparing the denial reason, patient chart evidence, and insurance policy criteria. It should not submit appeals by itself, contact patients, make clinical recommendations, or decide medical necessity without human review.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Data access and privacy</h3>
+            <p>The agent should only access the chart information needed for the appeal, such as visit notes, treatment history, exam findings, imaging orders, and policy documents. It should not have open access to the full patient record if that information is not relevant to the denial, and access should be logged and limited by role.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Human oversight design</h3>
+            <p>A human reviewer should approve every appeal before it is submitted because the agent could cite the wrong policy, miss required attachments, or overstate chart evidence. Low-risk appeals with clear source evidence could use a shorter checklist review, but high-risk cases should get a full manual review.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Testing, auditing, and accountability</h3>
+            <p>The hospital should regularly audit appeal letters and track errors such as wrong policy citations, missing documentation, hallucinated facts, and appeal success rate. If a factual error is submitted, the hospital and reviewer are still accountable because the agent is part of the workflow, not the final decision-maker.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Monitoring and sunset</h3>
+            <p>The agent should be monitored over time to see whether its accuracy, missing documentation rate, or appeal success rate gets worse. If it starts citing outdated policies, missing new denial patterns, or needing more corrections during review, the workflow should be paused and fixed before it keeps producing letters.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Hardest layer at scale</h3>
+            <p>The hardest layer to get right would be human oversight design. It is easy to say that a human should review everything, but that becomes harder if the hospital is processing 500 appeals per month. The hospital would need a review process that saves time without turning human approval into a rubber stamp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="should-use" class="section-card">
+      <div class="section-head">
+        <div class="number">9</div>
+        <h2>Should We Be Using AI Agents for This?</h2>
+      </div>
+      <div class="section-body">
+        <span class="kicker">Step 7: Benefits, risks, and guardrails</span>
+        <p>The concern that matters most to me is errors at scale. The AI Insurance Advocate worked well in the Maria Santos case, but the James Whitfield case showed how quickly the workflow can run into a limitation when the correct policy is missing. In a small lab, that is easy to catch because I can read the output and compare it to the chart. In a real hospital, if the agent handled hundreds or thousands of denials per month, even a small error rate could affect a lot of patients.</p>
+        <p>I think the benefits can outweigh the risks, but only if the agent is used as a drafting and evidence-finding tool, not as an automatic appeal system. The benefit is that appeals take time, and many denials may not get challenged because staff do not have enough time to review every case. If the agent can help find chart evidence and draft appeals faster, it could help more patients get coverage for care they may qualify for. The risk is that a polished appeal letter can create false confidence. If the agent cites the wrong policy, misses a chart note, or says documents are attached when they are not, it could hurt the patient's chance of getting the denial overturned.</p>
+        <div class="quote-strip">Specific guardrail: every factual claim in the appeal letter should be tied to a source from the chart or policy before submission.</div>
+        <p>This source-citation checklist would include visit dates, PT notes, exam findings, medication records, or policy sections. If a claim does not have a source, the system should flag it and prevent the appeal from being submitted until a human reviewer checks it.</p>
+        <p>This guardrail keeps the human-in-the-loop meaningful. The reviewer would not just read a professional-looking letter and assume it is correct. They would check whether the agent's claims actually match the evidence. This matters because healthcare appeals are not just about saving time. They affect patient coverage, hospital reimbursement, and trust in the system. AI agents can be useful in this workflow, but only if they make the evidence easier to verify instead of harder to question.</p>
+      </div>
+    </section>
+
+    <section id="concert" class="section-card">
+      <div class="section-head">
+        <div class="number">10</div>
+        <h2>Concert Weekend Agent</h2>
+      </div>
+      <div class="section-body">
+        <span class="kicker">Step 8: Design and build your own agent</span>
+        <p>For Step 8, I built a Concert Weekend Agent to help decide whether I should go to a rock or heavy metal show in Seattle. The workflow JSON confirmed that the agent used three tools:</p>
+        <ul class="workflow-list" aria-label="Concert Weekend Agent workflow tools">
+          <li>Budget</li>
+          <li>Calendar</li>
+          <li>Events</li>
+        </ul>
+        <p>The test prompt asked what I should do this weekend if I wanted to see a rock or heavy metal show while still staying within my schedule and budget. The agent recommended the Spite, Emmure, Psycho-Frame, and Rev3rent show at The Crocodile on Saturday, May 30, 2026.</p>
+        <p>The agent called the tools in the order Budget -> Calendar -> Events. At first, I expected it to check Events first, but the order still made sense. Since my prompt included budget and schedule limits, the agent checked how much I could spend, then checked when I was free, and then compared that information to the concert options. The recommendation was reasonable because the Spite and Emmure show was the strongest match for heavy metal, metalcore, and deathcore. It also fit my calendar because I was free after 4:00pm, and the show started around 5:30 to 6:00pm. The ticket was about $48.69 before fees, which fit my goal of staying under $60 before added costs.</p>
+        <p>I would not let this agent run completely unsupervised yet, even though the task is low stakes. A bad recommendation would not be dangerous, but it could still waste money or time if the ticket price, event details, or calendar information were outdated. The output was useful because it did not just pick a concert. It also explained the tradeoffs, including ticket fees, gas, parking, and how those costs could push the total closer to my $90 budget.</p>
+        <p>Before I trusted this agent more, it would need to prove that it can consistently use the right tools, avoid making up events or prices, and update its recommendation when my schedule or budget changes. I would want to test it over several weekends and compare its recommendations against actual ticket prices, event availability, and my real calendar. For a personal planning agent like this, I would probably trust it after a few successful uses because the consequences are limited.</p>
+        <p>This is different from how hospitals should evaluate agents like Epic's Penny. If my concert agent makes a mistake, the main risk is choosing the wrong event or spending more than I planned. In healthcare, an agent can affect patient care, billing, appeals, and access to treatment. Hospitals need a much higher trust standard before using agents in real workflows. They would need longer testing, audit logs, source citations, human approval, privacy controls, and clear rules for when the agent should stop and escalate to a person. This shows that the level of oversight should depend on how serious the consequences are.</p>
+
+        <div class="grid-2">
+          <div class="output-block">
+            <h3>Concert Weekend Agent output</h3>
+            <p><strong>Recommendation:</strong> Go to the Spite / Emmure show at The Crocodile on Saturday, May 30, 2026.</p>
+            <p><strong>Why:</strong> Best genre match: the bill, Spite, Emmure, Psycho-Frame, and Rev3rent, is explicitly heavy metal, metalcore, and deathcore.</p>
+            <p><strong>Schedule fit:</strong> The calendar shows I am free Saturday after 4:00pm, and the show's doors/start are around 5:30 to 6:00pm, so there is time to get there.</p>
+            <p><strong>Budget fit:</strong> The ticket price is about $48.69 before fees, which is within the ticket preference of under $60. With transportation around $25 to $35, the total should fit inside the $90 budget.</p>
+            <p><strong>Tradeoffs:</strong> Ticket fees could push the final price closer to or above the $60 soft cap. Transportation and parking could also increase the total cost. Backup options included Land of Wolves at Chop Suey or a smaller local rock show, but those were weaker matches for the music preference.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Concert tool order</h3>
+            <div class="log">Budget
+Calendar
+Events</div>
+          </div>
+        </div>
+
+        <figure>
+          <img src="assets/agentic-workflow-4.jpg" loading="lazy" decoding="async" alt="Concert Weekend Agent n8n workflow and output showing Budget, Calendar, and Events tools">
+          <figcaption><strong>Figure 4.</strong> Concert Weekend Agent workflow using Budget, Calendar, and Events tools.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="takeaways" class="section-card takeaways">
+      <div class="section-head">
+        <div class="number">11</div>
+        <h2>Final Takeaways</h2>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>Agentic AI is useful because it can connect multiple tools and produce a complete first draft or recommendation.</li>
+          <li>Tool quality matters because missing or incorrect tools limit the agent's answer.</li>
+          <li>Human review still matters, especially in high-stakes workflows like healthcare appeals.</li>
+          <li>Low-stakes agents can be trusted faster, but healthcare agents need stronger testing, governance, audit logs, source citations, privacy controls, and escalation rules.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Carlos Palomares | palomarescarlitos24@gmail.com | <a href="https://www.linkedin.com/in/carlosalbertopalomares">LinkedIn</a></p>
+  </footer>
+<script>
+(() => {
+  const prefetched = new Set();
+  const canPrefetch = (url) => url.origin === window.location.origin && (url.pathname.startsWith('/ai-business-labs/') || url.pathname === '/AIInBusiness' || url.pathname === '/');
+  const prefetch = (href) => {
+    try {
+      const url = new URL(href, window.location.href);
+      if (!canPrefetch(url) || prefetched.has(url.href)) return;
+      prefetched.add(url.href);
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.as = 'document';
+      link.href = url.href;
+      document.head.appendChild(link);
+    } catch { return; }
+  };
+  const scheduleIdle = (callback) => {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(callback, { timeout: 1800 });
+    } else {
+      window.setTimeout(callback, 900);
+    }
+  };
+  document.querySelectorAll('a[href]').forEach((link) => {
+    const warm = () => prefetch(link.href);
+    link.addEventListener('pointerenter', warm, { once: true });
+    link.addEventListener('focus', warm, { once: true });
+    link.addEventListener('touchstart', warm, { once: true, passive: true });
+  });
+  scheduleIdle(() => {
+    document.querySelectorAll('a[href^="/ai-business-labs/"], a[href="/AIInBusiness"]').forEach((link, index) => {
+      window.setTimeout(() => prefetch(link.href), index * 120);
+    });
+  });
+})();
+</script>
+</body>
+</html>
+

@@ -58,10 +58,127 @@
                 <div class="footer-contact" aria-label="Contact links">
                     <a href="mailto:palomarescarlitos24@gmail.com">palomarescarlitos24@gmail.com</a>
                     <a href="https://www.linkedin.com/in/carlosalbertopalomares/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://github.com/4sciencee" target="_blank" rel="noopener">GitHub</a>
                     <a href="https://app.joinhandshake.com/profiles/palomares" target="_blank" rel="noopener">Handshake</a>
                 </div>
             </div>
         </footer>
     }
+    <script>
+        (() => {
+            const emailAddress = 'palomarescarlitos24@gmail.com';
+            let toastTimer;
+            let toast = document.querySelector('.copy-cursor-toast');
+
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.className = 'copy-cursor-toast';
+                toast.setAttribute('role', 'status');
+                toast.setAttribute('aria-live', 'polite');
+                document.body.appendChild(toast);
+            }
+
+            const copyEmail = async () => {
+                if (navigator.clipboard?.writeText) {
+                    await navigator.clipboard.writeText(emailAddress);
+                    return;
+                }
+
+                const textArea = document.createElement('textarea');
+                textArea.value = emailAddress;
+                textArea.setAttribute('readonly', '');
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                textArea.remove();
+            };
+
+            const showCopiedMessage = (event, target) => {
+                const targetRect = target.getBoundingClientRect();
+                const x = event.clientX || targetRect.left + targetRect.width / 2;
+                const y = event.clientY || targetRect.top;
+                const toastWidth = 84;
+                const toastHeight = 32;
+                const left = Math.min(Math.max(x + 12, 12), window.innerWidth - toastWidth - 12);
+                const top = Math.min(Math.max(y - 8, toastHeight + 12), window.innerHeight - 12);
+
+                toast.textContent = 'Copied';
+                toast.style.left = `${left}px`;
+                toast.style.top = `${top}px`;
+                toast.classList.add('is-visible');
+
+                window.clearTimeout(toastTimer);
+                toastTimer = window.setTimeout(() => {
+                    toast.classList.remove('is-visible');
+                }, 1400);
+            };
+
+            document.addEventListener('click', async (event) => {
+                const link = event.target.closest(`a[href="mailto:${emailAddress}"]`);
+
+                if (!link) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                try {
+                    await copyEmail();
+                    showCopiedMessage(event, link);
+                } catch {
+                    showCopiedMessage(event, link);
+                }
+            });
+        })();
+
+        (() => {
+            const prefetched = new Set();
+            const canPrefetch = (url) => {
+                return url.origin === window.location.origin
+                    && (url.pathname.startsWith('/ai-business-labs/') || url.pathname === '/AIInBusiness');
+            };
+            const prefetch = (href) => {
+                try {
+                    const url = new URL(href, window.location.href);
+
+                    if (!canPrefetch(url) || prefetched.has(url.href)) {
+                        return;
+                    }
+
+                    prefetched.add(url.href);
+                    const link = document.createElement('link');
+                    link.rel = 'prefetch';
+                    link.as = 'document';
+                    link.href = url.href;
+                    document.head.appendChild(link);
+                } catch {
+                    return;
+                }
+            };
+            const scheduleIdle = (callback) => {
+                if ('requestIdleCallback' in window) {
+                    window.requestIdleCallback(callback, { timeout: 1800 });
+                    return;
+                }
+
+                window.setTimeout(callback, 900);
+            };
+
+            document.querySelectorAll('a[href]').forEach((link) => {
+                const warm = () => prefetch(link.href);
+                link.addEventListener('pointerenter', warm, { once: true });
+                link.addEventListener('focus', warm, { once: true });
+                link.addEventListener('touchstart', warm, { once: true, passive: true });
+            });
+
+            scheduleIdle(() => {
+                document.querySelectorAll('a[href^="/ai-business-labs/"]').forEach((link, index) => {
+                    window.setTimeout(() => prefetch(link.href), index * 140);
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
